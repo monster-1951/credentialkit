@@ -86,7 +86,7 @@ export default function AutoTestGenerator() {
                   <FormItem>
                     <FormLabel>Subject or Topic</FormLabel>
                     <FormControl>
-                      <Input
+                      <Textarea
                         placeholder="e.g., Bipolar Junction Transistors"
                         {...field}
                       />
