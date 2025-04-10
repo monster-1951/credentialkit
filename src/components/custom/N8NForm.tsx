@@ -64,6 +64,7 @@ export default function LeadForm() {
 
     try {
       await axios.post(N8N_WEBHOOK_URL_FOR_FORM, payload)
+      console.log(payload)
       toast.success('Form submitted successfully')
       form.reset()
     } catch (err) {

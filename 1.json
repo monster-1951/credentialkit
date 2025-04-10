@@ -1,16 +1,221 @@
+
+
 [
-    {
-      "What is your name": "Shiva Shankar",
-      "What is your email?": "shivashankarsince19@gmail.com",
-      "Mobile Number": 7816081995,
-      "Which Course you are interested in": [
-        "Deep Learning",
-        "Generative AI"
-      ],
-      "Preferred learning mode": "Hybrid",
-      "City/Branch": "ECIL , Hyderabad",
-      "Learning Goal": "Become AAA Owner",
-      "submittedAt": "2025-04-08T19:24:05.641-04:00",
-      "formMode": "test"
-    }
-  ]
+  {
+    "type": "mcq",
+    "question": "Who is the architect of the Indian Constitution?",
+    "options": ["Dr. B.R. Ambedkar", "Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose"],
+    "answer": "Dr. B.R. Ambedkar",
+    "explanation": "Dr. B.R. Ambedkar was the Chairman of the Drafting Committee that drafted the Indian Constitution."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the Preamble to the Indian Constitution?",
+    "answer": "The Preamble is the introductory part of the Indian Constitution that sets out the objectives and principles of the Constitution.",
+    "keywords": ["Objectives", "Principles", "Constitution"]
+  },
+  {
+    "type": "mcq",
+    "question": "Which part of the Indian Constitution deals with the fundamental rights?",
+    "options": ["Part I", "Part II", "Part III", "Part IV"],
+    "answer": "Part III",
+    "explanation": "Part III of the Indian Constitution deals with the fundamental rights of citizens."
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of federalism in the Indian Constitution.",
+    "answer": "The Indian Constitution is a federal constitution that divides power between the Centre and the States. It provides for a system of dual government, where the Centre has powers over certain subjects and the States have powers over others. This is known as the principle of federalism.",
+    "key_points": [
+      "Dual government",
+      "Centre-State relations",
+      "Distribution of powers",
+      "Federal system"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution is a rigid document.",
+    "answer": false,
+    "explanation": "The Indian Constitution is a flexible document that allows for changes through the process of amendment."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Chief Justice of India?",
+    "options": ["The President of India", "The Prime Minister of India", "The Chief Justice of India", "The Speaker of the Lok Sabha"],
+    "answer": "The Chief Justice of India",
+    "explanation": "The Chief Justice of India is the head of the judiciary in India and the highest-ranking judge in the country."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the significance of the Directive Principles of State Policy?",
+    "answer": "The Directive Principles of State Policy are non-justiciable provisions that guide the government in making laws and policies. They are aimed at promoting the welfare of the people and the development of the country.",
+    "keywords": ["Welfare", "Development", "Laws", "Policies"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of parliamentary democracy in the Indian context.",
+    "answer": "The Indian Constitution establishes a parliamentary democracy, where the executive is responsible to the legislature. The President of India, who is the head of state, plays a ceremonial role, while the Prime Minister, who is the head of government, is responsible for the administration of the country.",
+    "key_points": [
+      "Executive-legislative relationship",
+      "Parliamentary system",
+      "President's role",
+      "Prime Minister's role"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a unicameral legislature.",
+    "answer": false,
+    "explanation": "The Indian Constitution provides for a bicameral legislature, consisting of the Lok Sabha and the Rajya Sabha."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Chairman of the Rajya Sabha?",
+    "options": ["The Vice President of India", "The Speaker of the Lok Sabha", "The Chairman of the Rajya Sabha", "The Leader of the Opposition"],
+    "answer": "The Chairman of the Rajya Sabha",
+    "explanation": "The Chairman of the Rajya Sabha is the presiding officer of the Upper House of the Indian Parliament."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the purpose of the 42nd Amendment to the Indian Constitution?",
+    "answer": "The 42nd Amendment to the Indian Constitution was made to declare that the Constitution is a sacred document and to make certain changes to the Constitution to strengthen the federal structure of the country.",
+    "keywords": ["Sacred document", "Federal structure", "Constitutional amendments"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of judicial review in the Indian context.",
+    "answer": "In the Indian context, judicial review refers to the power of the judiciary to declare laws and government actions as unconstitutional or violative of fundamental rights. This power is exercised by the Supreme Court and the High Courts.",
+    "key_points": [
+      "Judicial power",
+      "Unconstitutional laws",
+      "Fundamental rights",
+      "Supreme Court jurisdiction"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a system of unitary government.",
+    "answer": false,
+    "explanation": "The Indian Constitution provides for a federal system of government, where power is divided between the Centre and the States."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Chief Election Commissioner of India?",
+    "options": ["The Chief Justice of India", "The Election Commissioner of India", "The Chief Election Commissioner of India", "The Speaker of the Lok Sabha"],
+    "answer": "The Chief Election Commissioner of India",
+    "explanation": "The Chief Election Commissioner of India is the head of the Election Commission of India and is responsible for conducting free and fair elections in the country."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the significance of the Right to Equality in the Indian Constitution?",
+    "answer": "The Right to Equality is a fundamental right that ensures that all citizens are treated equally and are not discriminated against on the basis of caste, religion, race, sex, or place of birth.",
+    "keywords": ["Fundamental rights", "Equality", "Discrimination"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of the separation of powers in the Indian Constitution.",
+    "answer": "The Indian Constitution provides for the separation of powers between the legislature, the executive, and the judiciary. This is aimed at preventing any one branch of government from becoming too powerful and to ensure accountability and checks and balances.",
+    "key_points": [
+      "Legislative power",
+      "Executive power",
+      "Judicial power",
+      "Separation of powers"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a system of separation of powers between the Centre and the States.",
+    "answer": false,
+    "explanation": "The Indian Constitution provides for a federal system of government, where power is divided between the Centre and the States, but it does not provide for a system of separation of powers between the Centre and the States."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Speaker of the Lok Sabha?",
+    "options": ["The Prime Minister of India", "The President of India", "The Speaker of the Lok Sabha", "The Leader of the Opposition"],
+    "answer": "The Speaker of the Lok Sabha",
+    "explanation": "The Speaker of the Lok Sabha is the presiding officer of the Lower House of the Indian Parliament."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the significance of the Right to Freedom of Speech and Expression in the Indian Constitution?",
+    "answer": "The Right to Freedom of Speech and Expression is a fundamental right that ensures that citizens have the right to express their opinions, beliefs, and ideas without fear of persecution or censorship.",
+    "keywords": ["Fundamental rights", "Freedom of speech", "Expression"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of the doctrine of judicial precedents in the Indian context.",
+    "answer": "In the Indian context, the doctrine of judicial precedents refers to the principle that a court must follow the decisions of higher courts in similar cases. This is aimed at ensuring consistency and predictability in the administration of justice.",
+    "key_points": [
+      "Judicial precedents",
+      "Higher courts",
+      "Consistency",
+      "Predictability"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a system of proportional representation.",
+    "answer": false,
+    "explanation": "The Indian Constitution provides for a system of first-past-the-post representation, where the candidate who gets the most votes in a constituency wins the seat."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Attorney General of India?",
+    "options": ["The Chief Justice of India", "The Attorney General of India", "The Prime Minister of India", "The Speaker of the Lok Sabha"],
+    "answer": "The Attorney General of India",
+    "explanation": "The Attorney General of India is the highest law officer of the government and is responsible for advising the government on legal matters."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the significance of the Right to Life and Personal Liberty in the Indian Constitution?",
+    "answer": "The Right to Life and Personal Liberty is a fundamental right that ensures that citizens have the right to live their lives with dignity and freedom from arbitrary arrest and detention.",
+    "keywords": ["Fundamental rights", "Right to life", "Personal liberty"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of the concept of the supremacy of the Constitution in the Indian context.",
+    "answer": "In the Indian context, the concept of the supremacy of the Constitution refers to the idea that the Constitution is the supreme law of the land and all laws, government actions, and institutions must be subordinate to it.",
+    "key_points": [
+      "Supremacy of the Constitution",
+      "Constitution as supreme law",
+      "Subordination of laws and institutions"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a system of universal adult franchise.",
+    "answer": true,
+    "explanation": "The Indian Constitution provides for universal adult franchise, where all citizens above the age of 18 years have the right to vote."
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Governor of a State in India?",
+    "options": ["The Chief Minister of the State", "The Prime Minister of India", "The Governor of the State", "The Speaker of the State Assembly"],
+    "answer": "The Governor of the State",
+    "explanation": "The Governor of a State in India is the constitutional head of the State and is appointed by the President of India."
+  },
+  {
+    "type": "short_answer",
+    "question": "What is the significance of the Right to Equality of Opportunity in the Indian Constitution?",
+    "answer": "The Right to Equality of Opportunity is a fundamental right that ensures that all citizens have equal opportunities to develop their talents and abilities, regardless of their social background or circumstances.",
+    "keywords": ["Fundamental rights", "Equality of opportunity"]
+  },
+  {
+    "type": "long_answer",
+    "question": "Explain the concept of the doctrine of implied repeal in the Indian context.",
+    "answer": "In the Indian context, the doctrine of implied repeal refers to the principle that when a new law is enacted, it impliedly repeals any previous law that is inconsistent with it. This is aimed at ensuring that the law is harmonious and consistent.",
+    "key_points": [
+      "Implied repeal",
+      "New laws",
+      "Previous laws",
+      "Harmony and consistency"
+    ]
+  },
+  {
+    "type": "true_false",
+    "question": "The Indian Constitution provides for a system of bicameral legislature.",
+    "answer": true,
+    "explanation": "The Indian Constitution provides for a bicameral legislature, consisting of the Lok Sabha and the Rajya Sabha."
+  }
+]
+
