@@ -194,7 +194,7 @@ export default function AutoTestGenerator() {
             </form>
           </Form>
 
-          {response.length > 0 && (
+          {/* {response.length > 0 && (
             <div className="mt-10 space-y-6">
               <h3 className="text-xl font-semibold">Generated Questions:</h3>
               {response.map((item, index) => (
@@ -235,7 +235,75 @@ export default function AutoTestGenerator() {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
+
+          {response.map((item, index) => (
+            <div
+              key={index}
+              className="bg-zinc-800 p-4 rounded-xl shadow space-y-2"
+            >
+              <p className="text-sm text-zinc-400">Type: {item.type}</p>
+              <p className="text-lg font-semibold">{item.question}</p>
+
+              {item.type === "mcq" && (
+                <>
+                  <ul className="list-disc list-inside pl-4 space-y-1">
+                    {item.options.map((opt: string, idx: number) => (
+                      <li key={idx}>{opt}</li>
+                    ))}
+                  </ul>
+                  <p className="text-green-400">Answer: {item.answer}</p>
+                  <p className="text-sm text-zinc-400">{item.explanation}</p>
+                </>
+              )}
+
+              {item.type === "short_answer" && (
+                <>
+                  <p className="text-green-400">Answer: {item.answer}</p>
+                  {item.keywords && (
+                    <p className="text-sm text-zinc-400">
+                      Keywords: {item.keywords.join(", ")}
+                    </p>
+                  )}
+                </>
+              )}
+
+              {item.type === "long_answer" && (
+                <>
+                  <p className="text-green-400">Answer:</p>
+                  <ul className="list-decimal list-inside space-y-1">
+                    {item.answer
+                      .split(/\d+\.\s+/)
+                      .filter(Boolean)
+                      .map((point: string, idx: number) => (
+                        <li key={idx}>{point.trim()}</li>
+                      ))}
+                  </ul>
+                  {item.key_points && (
+                    <div className="mt-2">
+                      <p className="text-sm font-semibold text-zinc-300">
+                        Key Points:
+                      </p>
+                      <ul className="list-disc list-inside ml-4 text-sm text-zinc-400 space-y-1">
+                        {item.key_points.map((kp: string, kpIndex: number) => (
+                          <li key={kpIndex}>{kp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {item.type === "true_false" && (
+                <>
+                  <p className="text-green-400">
+                    Answer: {item.answer ? "True" : "False"}
+                  </p>
+                  <p className="text-sm text-zinc-400">{item.explanation}</p>
+                </>
+              )}
+            </div>
+          ))}
         </CardContent>
       </Card>
     </div>
