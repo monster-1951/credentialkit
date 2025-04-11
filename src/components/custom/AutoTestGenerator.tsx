@@ -49,11 +49,11 @@ export default function AutoTestGenerator() {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "Subject/Topic": "Algae",
+      "Subject/Topic": "",
       "Number of Questions": 5,
-      "Difficulty Level": "High",
-      "Question Format": "Long Answers",
-      "Your Mail ID": "buyyankarshivani@gmail.com",
+      "Difficulty Level": "Moderate",
+      "Question Format": "MCQ",
+      "Your Mail ID": "",
     },
   });
 
@@ -97,7 +97,7 @@ export default function AutoTestGenerator() {
                   <FormItem>
                     <FormLabel>Subject or Topic</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="e.g., Bipolar Junction Transistors" {...field} />
+                      <Textarea placeholder="e.g., Laws of Thermodynamics" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
