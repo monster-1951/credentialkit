@@ -157,7 +157,7 @@ export default function AutoTestGenerator() {
                         <SelectItem value="Mixed of Short Answers, Long Answers, True/False, MCQ">Mixed</SelectItem>
                         <SelectItem value="MCQ">MCQ</SelectItem>
                         <SelectItem value="True/False">True/False</SelectItem>
-                        <SelectItem value="Long Answers">Long Answers</SelectItem>
+                       {/*  <SelectItem value="Long Answers">Long Answers</SelectItem> */}
                         <SelectItem value="Short Answers">Short Answers</SelectItem>
                       </SelectContent>
                     </Select>
@@ -186,9 +186,9 @@ export default function AutoTestGenerator() {
             </form>
           </Form>
 
-        {response && <QuestionRenderer data={response} />}
         </CardContent>
       </Card>
+        {response && <QuestionRenderer data={response} />}
     </div>
   );
 }
