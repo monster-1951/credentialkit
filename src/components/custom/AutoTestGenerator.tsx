@@ -25,6 +25,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { AUTOTESTGENERATOR_WEBHOOK_URL } from "@/constants/URLs";
 import QuestionRenderer from "./TestDisplay";
+import Link from "next/link";
 
 const formSchema = z.object({
   "Subject/Topic": z.string().min(1),
@@ -188,6 +189,7 @@ export default function AutoTestGenerator() {
 
         </CardContent>
       </Card>
+      <Link href={'/Chat'} className="w-full mx-auto rounded-md flex justify-end p-3"><Button className="bg-white text-black">Chat</Button></Link>
         {response && <QuestionRenderer data={response} />}
     </div>
   );
