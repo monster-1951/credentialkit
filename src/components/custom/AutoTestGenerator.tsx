@@ -29,13 +29,12 @@ import Link from "next/link";
 
 const formSchema = z.object({
   "Subject/Topic": z.string().min(1),
-  "Number of Questions": z.coerce.number().min(1),
+  "Number of Questions": z.coerce.number().min(1).max(30),
   "Difficulty Level": z.enum(["High", "Moderate", "Easy"]),
   "Question Format": z.enum([
     "Mixed of Short Answers, Long Answers, True/False, MCQ",
     "MCQ",
     "True/False",
-    "Long Answers",
     "Short Answers",
   ]),
   "Your Mail ID": z.string().email(),
