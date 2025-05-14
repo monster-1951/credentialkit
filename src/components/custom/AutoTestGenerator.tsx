@@ -34,10 +34,9 @@ const formSchema = z.object({
   "Number of Questions": z.coerce.number().min(1).max(30),
   "Difficulty Level": z.enum(["High", "Moderate", "Easy"]),
   "Question Format": z.enum([
-    "Mixed of Short Answers, Long Answers, True/False, MCQ",
-    "MCQ",
-    "True/False",
-    "Short Answers",
+    "mcq",
+    "true_false",
+    "short_answer",
   ]),
   "Your Mail ID": z.string().email(),
 });
@@ -128,12 +127,13 @@ export default function AutoTestGenerator() {
       "Subject/Topic": "",
       "Number of Questions": 5,
       "Difficulty Level": "Moderate",
-      "Question Format": "MCQ",
+      "Question Format": "mcq",
       "Your Mail ID": "",
     },
   });
 
   const onSubmit = async (data: FormData) => {
+    
     setGenerating(true);
     setError("");
     try {
@@ -286,25 +286,19 @@ export default function AutoTestGenerator() {
                           </FormControl>
                           <SelectContent className="bg-white border-gray-200 shadow-lg">
                             <SelectItem
-                              value="Mixed of Short Answers, Long Answers, True/False, MCQ"
-                              className="hover:bg-indigo-50 focus:bg-indigo-50"
-                            >
-                              Mixed Format
-                            </SelectItem>
-                            <SelectItem
-                              value="MCQ"
+                              value="mcq"
                               className="hover:bg-indigo-50 focus:bg-indigo-50"
                             >
                               Multiple Choice
                             </SelectItem>
                             <SelectItem
-                              value="True/False"
+                              value="true_false"
                               className="hover:bg-indigo-50 focus:bg-indigo-50"
                             >
                               True/False
                             </SelectItem>
                             <SelectItem
-                              value="Short Answers"
+                              value="short_answer"
                               className="hover:bg-indigo-50 focus:bg-indigo-50"
                             >
                               Short Answers
