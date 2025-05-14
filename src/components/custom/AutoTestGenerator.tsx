@@ -390,13 +390,13 @@ export default function AutoTestGenerator() {
           </CardContent>
         </Card>
 
-        <div className="mt-6 flex justify-end">
+        {/* <div className="mt-6 flex justify-end">
           <Link href="/Chat">
             <Button className="bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 shadow-sm">
               Need Help? Chat with AI
             </Button>
           </Link>
-        </div>
+        </div> */}
 
         {response.length > 0 && (
           <motion.div

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner"
 import {  Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { N8N } from "@/components/custom/N8N";
 
 
 const geistMono = Geist_Mono({
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <N8N/>
       </body>
     </html>
   );
