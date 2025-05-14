@@ -133,7 +133,7 @@ export default function AutoTestGenerator() {
   });
 
   const onSubmit = async (data: FormData) => {
-    
+    console.log(data)
     setGenerating(true);
     setError("");
     try {
