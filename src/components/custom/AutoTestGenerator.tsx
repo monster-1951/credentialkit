@@ -147,7 +147,7 @@ export default function AutoTestGenerator() {
       if (Array.isArray(res.data)) {
         setResponse(res.data);
       } else {
-        setError("Invalid response format received.");
+        setError("Invalid response format received. Please try again");
       }
     } catch (error) {
       console.error("Error:", error);
