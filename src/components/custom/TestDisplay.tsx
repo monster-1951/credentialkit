@@ -1,9 +1,11 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
+import { BookOpen, CheckCircle, Lightbulb, ListChecks } from "lucide-react";
 
 type QuestionType = {
   json: {
@@ -23,10 +25,22 @@ type Props = {
 
 const QuestionRenderer: React.FC<Props> = ({ data }) => {
   const splitt = (text: string) => {
-    //   console.log(text)
-    //   console.log(text.split(/(?=\d+\.\s)/g).map((point) => point.trim()))
-    // console.log(text.match(/\d+\.[^]+?(?=\s\d+\.|$)/g) || []);
     return text.match(/\d+\.[^]+?(?=\s\d+\.|$)/g) || [];
+  };
+
+  const getQuestionTypeIcon = (type: string) => {
+    switch (type) {
+      case "mcq":
+        return <ListChecks className="h-5 w-5 text-indigo-600" />;
+      case "short_answer":
+        return <BookOpen className="h-5 w-5 text-blue-600" />;
+      case "long_answer":
+        return <Lightbulb className="h-5 w-5 text-amber-600" />;
+      case "true_false":
+        return <CheckCircle className="h-5 w-5 text-green-600" />;
+      default:
+        return <BookOpen className="h-5 w-5 text-gray-600" />;
+    }
   };
 
   return (
@@ -43,107 +57,153 @@ const QuestionRenderer: React.FC<Props> = ({ data }) => {
         } = item.json;
 
         return (
-          <Card
+          <motion.div
             key={index}
-            className="p-4 space-y-4 bg-slate-900 text-white border border-zinc-700"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <CardContent>
-              <div className="text-lg font-semibold text-zinc-100">
-                {question}
-              </div>
-              <Separator className="my-2 bg-zinc-700" />
-
-              {type === "mcq" && options && (
-                <RadioGroup defaultValue={String(answer)}>
-                  {options.map((option, i) => (
-                    <div key={i} className="flex items-center space-x-2">
-                      <RadioGroupItem
-                        value={option}
-                        id={`option-${index}-${i}`}
-                      />
-                      <label
-                        htmlFor={`option-${index}-${i}`}
-                        className="text-zinc-200"
-                      >
-                        {option}
-                      </label>
-                    </div>
-                  ))}
-                  <div className="text-zinc-400">Answer:</div>
-                  <label
-                    htmlFor={`option-${index}`}
-                    className="text-zinc-200"
-                  >
-                    {answer}
-                  </label>
-                </RadioGroup>
-              )}
-
-              {type === "short_answer" && (
-                <>
-                  <div className="text-zinc-400">Answer:</div>
-                  <div className="text-zinc-100">{answer}</div>
-                  {keywords && (
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {keywords.map((keyword, i) => (
-                        <Badge
-                          key={i}
-                          variant="outline"
-                          className="text-xs border-zinc-600 text-zinc-300"
-                        >
-                          {keyword}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
-
-              {type === "long_answer" && (
-                <>
-                  <div className=" text-zinc-400">Answer:</div>
-                  <div className="whitespace-pre-line text-zinc-100">
-                    {typeof answer === "string" &&
-                      splitt(answer).map((point, index) => {
-                        return (
-                          <React.Fragment key={index}>
-                            {point.trim()}
-                            <br />
-                          </React.Fragment>
-                        );
-                      })}
+            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-3">
+                  {getQuestionTypeIcon(type)}
+                  <div className="text-lg font-semibold text-gray-800">
+                    Question {index + 1}
                   </div>
-                  {key_points && (
-                    <div className="mt-4 space-y-1">
-                      <div className="font-medium text-zinc-200">
-                        Key Points:
-                      </div>
-                      {key_points.map((point, i) => (
-                        <div key={i} className="flex items-start space-x-2">
-                          <span className="text-sm text-zinc-300">•</span>
-                          <span className=" text-zinc-200">{point}</span>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-gray-700">{question}</div>
+                <Separator className="bg-gray-100" />
+
+                {type === "mcq" && options && (
+                  <div className="space-y-3">
+                    <RadioGroup defaultValue={String(answer)}>
+                      {options.map((option, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                          <RadioGroupItem
+                            value={option}
+                            id={`option-${index}-${i}`}
+                            className="text-indigo-600 border-gray-300"
+                          />
+                          <label
+                            htmlFor={`option-${index}-${i}`}
+                            className="text-gray-700 cursor-pointer"
+                          >
+                            {option}
+                          </label>
                         </div>
                       ))}
+                    </RadioGroup>
+                    <div className="mt-3 p-3 bg-green-50 rounded-lg">
+                      <div className="text-sm font-medium text-green-700">
+                        Correct Answer:
+                      </div>
+                      <div className="text-green-800 font-medium">
+                        {answer}
+                      </div>
                     </div>
-                  )}
-                </>
-              )}
+                  </div>
+                )}
 
-              {type === "true_false" && (
-                <div className="flex items-center space-x-2">
-                  <Checkbox checked={!!answer} disabled />
-                  <label className="text-zinc-200">{String(answer)}</label>
-                </div>
-              )}
+                {type === "short_answer" && (
+                  <div className="space-y-3">
+                    <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="text-sm font-medium text-blue-700">
+                        Expected Answer:
+                      </div>
+                      <div className="text-blue-800">{answer}</div>
+                    </div>
+                    {keywords && (
+                      <div className="mt-2">
+                        <div className="text-sm font-medium text-gray-500 mb-2">
+                          Keywords to include:
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {keywords.map((keyword, i) => (
+                            <Badge
+                              key={i}
+                              variant="outline"
+                              className="text-xs bg-indigo-50 text-indigo-700 border-indigo-200"
+                            >
+                              {keyword}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-              {explanation && (
-                <div className="text-sm mt-4 text-zinc-400">
-                  <strong className=" text-zinc-200">Explanation:</strong>{" "}
-                  {explanation}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+                {type === "long_answer" && (
+                  <div className="space-y-3">
+                    <div className="p-3 bg-amber-50 rounded-lg">
+                      <div className="text-sm font-medium text-amber-700">
+                        Model Answer:
+                      </div>
+                      <div className="text-amber-800 whitespace-pre-line">
+                        {typeof answer === "string" &&
+                          splitt(answer).map((point, index) => {
+                            return (
+                              <React.Fragment key={index}>
+                                {point.trim()}
+                                <br />
+                              </React.Fragment>
+                            );
+                          })}
+                      </div>
+                    </div>
+                    {key_points && (
+                      <div className="mt-3 p-3 bg-purple-50 rounded-lg">
+                        <div className="text-sm font-medium text-purple-700 mb-2">
+                          Key Points to Cover:
+                        </div>
+                        <ul className="space-y-2">
+                          {key_points.map((point, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start space-x-2 text-purple-800"
+                            >
+                              <span className="text-purple-500">•</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {type === "true_false" && (
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <Checkbox
+                      checked={!!answer}
+                      disabled
+                      className="data-[state=checked]:bg-green-600 border-gray-300"
+                    />
+                    <div className="text-gray-700">
+                      The correct answer is{" "}
+                      <span className="font-medium text-green-700">
+                        {String(answer)}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {explanation && (
+                  <div className="mt-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="text-sm font-medium text-gray-700 mb-1">
+                      Explanation:
+                    </div>
+                    <div className="text-gray-600">{explanation}</div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </motion.div>
         );
       })}
     </div>

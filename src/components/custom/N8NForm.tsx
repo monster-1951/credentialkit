@@ -19,7 +19,8 @@ import { Checkbox } from '../ui/checkbox'
 import { Textarea } from '../ui/textarea'
 import { N8N_WEBHOOK_URL_FOR_FORM } from '@/constants/URLs'
 import { BRANCHES, COURSES } from '@/constants/CoachingCenterDetails'
-
+import { motion } from 'framer-motion'
+import { GraduationCap, MapPin, MonitorSmartphone, Target } from 'lucide-react'
 
 const MODES = ['Online', 'Offline', 'Hybrid']
 
@@ -64,192 +65,282 @@ export default function LeadForm() {
 
     try {
       await axios.post(N8N_WEBHOOK_URL_FOR_FORM, payload)
-      console.log(payload)
-      toast.success('Form submitted successfully')
+      toast.success('Form submitted successfully! We will contact you soon.', {
+        position: 'top-center',
+        duration: 5000,
+      })
       form.reset()
     } catch (err) {
-      toast.error('Submission failed. Try again.')
+      toast.error('Submission failed. Please try again.', {
+        position: 'top-center',
+      })
       console.error(err)
     }
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 p-6 max-w-xl mx-auto bg-[#0f0f0f] text-white rounded-2xl shadow-xl border border-[#1f1f1f]"
-      >
-        {/* Name */}
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input {...field} className="bg-[#1a1a1a] text-white" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Email */}
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" {...field} className="bg-[#1a1a1a] text-white" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Mobile */}
-        <FormField
-          control={form.control}
-          name="mobile"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Mobile Number</FormLabel>
-              <FormControl>
-                <Input type="tel" {...field} className="bg-[#1a1a1a] text-white" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Courses */}
-        <FormField
-          control={form.control}
-          name="courses"
-          render={() => (
-            <FormItem>
-              <FormLabel>Which Course are you interested in?</FormLabel>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                {COURSES.map((course) => (
-                  <FormField
-                    key={course}
-                    control={form.control}
-                    name="courses"
-                    render={({ field }) => (
-                      <FormItem
-                        key={course}
-                        className="flex flex-row items-center space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(course)}
-                            onCheckedChange={(checked) => {
-                              const updated = checked
-                                ? [...field.value, course]
-                                : field.value.filter((c: string) => c !== course)
-                              field.onChange(updated)
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="text-sm font-normal text-gray-400">
-                          {course}
-                        </FormLabel>
-                      </FormItem>
-                    )}
-                  />
-                ))}
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Mode */}
-        <FormField
-          control={form.control}
-          name="mode"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Preferred Learning Mode</FormLabel>
-              <div className="grid grid-cols-3 gap-2 mt-2">
-                {MODES.map((m) => (
-                  <Button
-                    type="button"
-                    key={m}
-                    variant="outline"
-                    className={cn(
-                      'rounded-xl px-4 py-1 text-sm',
-                      field.value === m
-                        ? 'bg-white text-black font-semibold'
-                        : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#222]'
-                    )}
-                    onClick={() => field.onChange(m)}
-                  >
-                    {m}
-                  </Button>
-                ))}
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* City/Branch as buttons */}
-        <FormField
-          control={form.control}
-          name="city"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>City/Branch</FormLabel>
-              <div className="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-3">
-                {BRANCHES.map((b) => (
-                  <Button
-                    type="button"
-                    key={b}
-                    variant="outline"
-                    className={cn(
-                      'rounded-xl px-4 py-1 text-sm text-center',
-                      field.value === b
-                        ? 'bg-white text-black font-semibold'
-                        : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#222]'
-                    )}
-                    onClick={() => field.onChange(b)}
-                  >
-                    {b}
-                  </Button>
-                ))}
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Goal */}
-        <FormField
-          control={form.control}
-          name="goal"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Learning Goal</FormLabel>
-              <FormControl>
-                <Textarea {...field} className="bg-[#1a1a1a] text-white" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Submit Button */}
-        <Button
-          type="submit"
-          disabled={form.formState.isSubmitting}
-          className="w-full bg-white text-black hover:bg-gray-200"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="max-w-2xl mx-auto"
+    >
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-6 p-8 bg-white rounded-2xl shadow-xl border border-gray-100"
         >
-          {form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
-        </Button>
-      </form>
-    </Form>
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">Enroll Now</h2>
+            <p className="text-gray-600">Start your learning journey with us today</p>
+          </div>
+
+          {/* Name */}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium">Full Name</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="bg-gray-50 border-gray-200 focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder="Enter your full name"
+                  />
+                </FormControl>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium">Email Address</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...field}
+                    className="bg-gray-50 border-gray-200 focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder="your@email.com"
+                  />
+                </FormControl>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Mobile */}
+          <FormField
+            control={form.control}
+            name="mobile"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium">Mobile Number</FormLabel>
+                <FormControl>
+                  <Input
+                    type="tel"
+                    {...field}
+                    className="bg-gray-50 border-gray-200 focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder="+91 9876543210"
+                  />
+                </FormControl>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Courses */}
+          <FormField
+            control={form.control}
+            name="courses"
+            render={() => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5 text-indigo-600" />
+                  Which Course are you interested in?
+                </FormLabel>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                  {COURSES.map((course) => (
+                    <FormField
+                      key={course}
+                      control={form.control}
+                      name="courses"
+                      render={({ field }) => (
+                        <FormItem
+                          key={course}
+                          className="flex flex-row items-center space-x-3 space-y-0 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value?.includes(course)}
+                              onCheckedChange={(checked) => {
+                                const updated = checked
+                                  ? [...field.value, course]
+                                  : field.value.filter((c: string) => c !== course)
+                                field.onChange(updated)
+                              }}
+                              className="border-gray-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                            />
+                          </FormControl>
+                          <FormLabel className="text-sm font-normal text-gray-700 cursor-pointer">
+                            {course}
+                          </FormLabel>
+                        </FormItem>
+                      )}
+                    />
+                  ))}
+                </div>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Mode */}
+          <FormField
+            control={form.control}
+            name="mode"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                  <MonitorSmartphone className="h-5 w-5 text-blue-600" />
+                  Preferred Learning Mode
+                </FormLabel>
+                <div className="grid grid-cols-3 gap-3 mt-3">
+                  {MODES.map((m) => (
+                    <motion.div
+                      key={m}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button
+                        type="button"
+                        key={m}
+                        variant="outline"
+                        className={cn(
+                          'rounded-lg px-4 py-3 text-sm h-auto',
+                          field.value === m
+                            ? 'bg-indigo-100 border-indigo-500 text-indigo-700 font-semibold'
+                            : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                        )}
+                        onClick={() => field.onChange(m)}
+                      >
+                        {m}
+                      </Button>
+                    </motion.div>
+                  ))}
+                </div>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* City/Branch as buttons */}
+          <FormField
+            control={form.control}
+            name="city"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-amber-600" />
+                  Select Your Nearest Branch
+                </FormLabel>
+                <div className="grid grid-cols-1 gap-3 mt-3 sm:grid-cols-3">
+                  {BRANCHES.map((b) => (
+                    <motion.div
+                      key={b}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button
+                        type="button"
+                        key={b}
+                        variant="outline"
+                        className={cn(
+                          'rounded-lg px-4 py-3 text-sm h-auto',
+                          field.value === b
+                            ? 'bg-amber-100 border-amber-500 text-amber-700 font-semibold'
+                            : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                        )}
+                        onClick={() => field.onChange(b)}
+                      >
+                        {b}
+                      </Button>
+                    </motion.div>
+                  ))}
+                </div>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Goal */}
+          <FormField
+            control={form.control}
+            name="goal"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                  <Target className="h-5 w-5 text-green-600" />
+                  Your Learning Goal
+                </FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    className="bg-gray-50 border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 min-h-[120px]"
+                    placeholder="Describe what you want to achieve..."
+                  />
+                </FormControl>
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          {/* Submit Button */}
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+          >
+            <Button
+              type="submit"
+              disabled={form.formState.isSubmitting}
+              className="w-full py-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-lg font-semibold shadow-lg"
+            >
+              {form.formState.isSubmitting ? (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Processing...
+                </span>
+              ) : (
+                'Submit Application'
+              )}
+            </Button>
+          </motion.div>
+        </form>
+      </Form>
+    </motion.div>
   )
 }
