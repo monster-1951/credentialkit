@@ -45,78 +45,81 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function AutoTestGenerator() {
-  const [response, setResponse] = useState<any[]>([
-    {
-        "json": {
-            "type": "mcq",
-            "question": "1. Which of the following statements is a direct consequence of the Second Law of Thermodynamics?",
-            "options": [
-                "A) A refrigerator can heat up its surroundings.",
-                "B) A heat engine can convert all of its input heat into useful work.",
-                "C) Total entropy always increases in a closed system.",
-                "D) A heat engine can run indefinitely without any external input of energy."
-            ],
-            "answer": "C) Total entropy always increases in a closed system.",
-            "explanation": "The Second Law of Thermodynamics states that the total entropy of a closed system will always increase over time, except in reversible processes."
-        }
-    },
-    {
-        "json": {
-            "type": "mcq",
-            "question": "2. What is the primary purpose of the Carnot cycle in the context of the Second Law of Thermodynamics?",
-            "options": [
-                "A) To demonstrate the efficiency of a heat engine.",
-                "B) To prove the existence of the Second Law.",
-                "C) To derive the fundamental equation for the entropy change in a system.",
-                "D) To show that a heat engine can operate in reverse."
-            ],
-            "answer": "A) To demonstrate the efficiency of a heat engine.",
-            "explanation": "The Carnot cycle is a hypothetical cycle that helps to illustrate the maximum possible efficiency of a heat engine, as derived from the Second Law of Thermodynamics."
-        }
-    },
-    {
-        "json": {
-            "type": "mcq",
-            "question": "3. Which of the following statements is a characteristic of the Third Law of Thermodynamics?",
-            "options": [
-                "A) It describes the behavior of systems at absolute zero.",
-                "B) It discusses the concept of entropy.",
-                "C) It deals with the efficiency of heat engines.",
-                "D) It explains the behavior of gases at high temperatures."
-            ],
-            "answer": "A) It describes the behavior of systems at absolute zero.",
-            "explanation": "The Third Law of Thermodynamics states that as the temperature of a system approaches absolute zero, its entropy approaches a minimum value."
-        }
-    },
-    {
-        "json": {
-            "type": "mcq",
-            "question": "4. Which of the following is NOT a type of thermodynamic process?",
-            "options": [
-                "A) Isothermal process",
-                "B) Adiabatic process",
-                "C) Isobaric process",
-                "D) Electrical process"
-            ],
-            "answer": "D) Electrical process",
-            "explanation": "Thermodynamic processes refer to the changes in the state of a system that involve heat transfer, work, or changes in the number of particles. Electrical processes are not a type of thermodynamic process."
-        }
-    },
-    {
-        "json": {
-            "type": "mcq",
-            "question": "5. Which of the following statements is a consequence of the Zeroth Law of Thermodynamics?",
-            "options": [
-                "A) If two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.",
-                "B) If two systems are not in thermal equilibrium, then they can never be made to be in thermal equilibrium.",
-                "C) The temperature of a system is a measure of its internal energy.",
-                "D) The temperature of a system is a measure of its entropy."
-            ],
-            "answer": "A) If two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.",
-            "explanation": "The Zeroth Law of Thermodynamics states that if two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other."
-        }
-    }
-]);
+  const [response, setResponse] = useState<any[]>(
+//     [
+//     {
+//         "json": {
+//             "type": "mcq",
+//             "question": "1. Which of the following statements is a direct consequence of the Second Law of Thermodynamics?",
+//             "options": [
+//                 "A) A refrigerator can heat up its surroundings.",
+//                 "B) A heat engine can convert all of its input heat into useful work.",
+//                 "C) Total entropy always increases in a closed system.",
+//                 "D) A heat engine can run indefinitely without any external input of energy."
+//             ],
+//             "answer": "C) Total entropy always increases in a closed system.",
+//             "explanation": "The Second Law of Thermodynamics states that the total entropy of a closed system will always increase over time, except in reversible processes."
+//         }
+//     },
+//     {
+//         "json": {
+//             "type": "mcq",
+//             "question": "2. What is the primary purpose of the Carnot cycle in the context of the Second Law of Thermodynamics?",
+//             "options": [
+//                 "A) To demonstrate the efficiency of a heat engine.",
+//                 "B) To prove the existence of the Second Law.",
+//                 "C) To derive the fundamental equation for the entropy change in a system.",
+//                 "D) To show that a heat engine can operate in reverse."
+//             ],
+//             "answer": "A) To demonstrate the efficiency of a heat engine.",
+//             "explanation": "The Carnot cycle is a hypothetical cycle that helps to illustrate the maximum possible efficiency of a heat engine, as derived from the Second Law of Thermodynamics."
+//         }
+//     },
+//     {
+//         "json": {
+//             "type": "mcq",
+//             "question": "3. Which of the following statements is a characteristic of the Third Law of Thermodynamics?",
+//             "options": [
+//                 "A) It describes the behavior of systems at absolute zero.",
+//                 "B) It discusses the concept of entropy.",
+//                 "C) It deals with the efficiency of heat engines.",
+//                 "D) It explains the behavior of gases at high temperatures."
+//             ],
+//             "answer": "A) It describes the behavior of systems at absolute zero.",
+//             "explanation": "The Third Law of Thermodynamics states that as the temperature of a system approaches absolute zero, its entropy approaches a minimum value."
+//         }
+//     },
+//     {
+//         "json": {
+//             "type": "mcq",
+//             "question": "4. Which of the following is NOT a type of thermodynamic process?",
+//             "options": [
+//                 "A) Isothermal process",
+//                 "B) Adiabatic process",
+//                 "C) Isobaric process",
+//                 "D) Electrical process"
+//             ],
+//             "answer": "D) Electrical process",
+//             "explanation": "Thermodynamic processes refer to the changes in the state of a system that involve heat transfer, work, or changes in the number of particles. Electrical processes are not a type of thermodynamic process."
+//         }
+//     },
+//     {
+//         "json": {
+//             "type": "mcq",
+//             "question": "5. Which of the following statements is a consequence of the Zeroth Law of Thermodynamics?",
+//             "options": [
+//                 "A) If two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.",
+//                 "B) If two systems are not in thermal equilibrium, then they can never be made to be in thermal equilibrium.",
+//                 "C) The temperature of a system is a measure of its internal energy.",
+//                 "D) The temperature of a system is a measure of its entropy."
+//             ],
+//             "answer": "A) If two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.",
+//             "explanation": "The Zeroth Law of Thermodynamics states that if two systems are in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other."
+//         }
+//     }
+// ]
+[]
+);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState("");
   const form = useForm<FormData>({
