@@ -88,20 +88,20 @@ export default function LeadForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 p-8 bg-white rounded-2xl shadow-xl border border-gray-100"
+          className="space-y-10 p-8 bg-white rounded-2xl shadow-xl border border-gray-100"
         >
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Enroll Now</h2>
-            <p className="text-gray-600">Start your learning journey with us today</p>
+          <div className="text-center mb-6 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 py-3 w-full">
+            <h2 className="text-3xl font-bold text-white mb-2">Enroll Now</h2>
+            <p className=" text-white">Start your learning journey with us today</p>
           </div>
-
+<hr />
           {/* Name */}
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium">Full Name</FormLabel>
+                <FormLabel className="text-gray-900 font-bold text-lg">Full Name</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -120,7 +120,7 @@ export default function LeadForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium">Email Address</FormLabel>
+                <FormLabel className="text-gray-900 font-bold text-lg">Email Address</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
@@ -140,7 +140,7 @@ export default function LeadForm() {
             name="mobile"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium">Mobile Number</FormLabel>
+                <FormLabel className="text-gray-900 font-bold text-lg">Mobile Number</FormLabel>
                 <FormControl>
                   <Input
                     type="tel"
@@ -160,7 +160,7 @@ export default function LeadForm() {
             name="courses"
             render={() => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                <FormLabel className="text-gray-900 font-bold text-lg flex items-center gap-2">
                   <GraduationCap className="h-5 w-5 text-indigo-600" />
                   Which Course are you interested in?
                 </FormLabel>
@@ -206,7 +206,7 @@ export default function LeadForm() {
             name="mode"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                <FormLabel className="text-gray-900 font-bold text-lg flex items-center gap-2">
                   <MonitorSmartphone className="h-5 w-5 text-blue-600" />
                   Preferred Learning Mode
                 </FormLabel>
@@ -245,7 +245,7 @@ export default function LeadForm() {
             name="city"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                <FormLabel className="text-gray-900 font-bold text-lg flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-amber-600" />
                   Select Your Nearest Branch
                 </FormLabel>
@@ -284,7 +284,7 @@ export default function LeadForm() {
             name="goal"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-medium flex items-center gap-2">
+                <FormLabel className="text-gray-900 font-bold text-lg flex items-center gap-2">
                   <Target className="h-5 w-5 text-green-600" />
                   Your Learning Goal
                 </FormLabel>
